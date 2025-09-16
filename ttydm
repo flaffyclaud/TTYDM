@@ -1,0 +1,77 @@
+#!/bin/bash
+
+
+banner() { 
+  figlet "TTYDM" | gum style --foreground 5 --border-foreground 6 --border thick \
+  --align center --width 60 --margin "1 1"  --padding "2 3" 
+  gum style --align right --foreground 10 "$(printf "%63s\n" "-Aman Jafar")"
+}
+
+cancelled() {
+  echo 
+  gum style --foreground 9 "Cancelled"
+  echo
+}
+
+deploy() {
+  sed -i '/^exec /c\exec '"$1" /home/$USER/.xinitrc
+}
+
+confirm() {
+  gum confirm --prompt.foreground 14 --selected.background 12
+}
+
+if pgrep -x xinit > /dev/null; then
+  echo
+  banner
+  gum style --foreground 10 'GUI is already running. Would you like to:'
+  echo
+  c1=$(gum choose --cursor.foreground 14 --height 10 --item.foreground 5 --selected.foreground 12 \
+  --selected.background 6 "1. Quit to TTY" "2. Shutdown" "3. Reboot" "4. Cancel")
+
+  case $c1 in
+
+    "1. Quit to TTY") confirm && killall xinit || cancelled ;;
+    "2. Shutdown") confirm && shutdown now || cancelled ;;
+    "3. Reboot") confirm && reboot || cancelled ;;
+    "4. Cancel") cancelled && exit 0 ;;
+    *) cancelled && exit 0 ;;
+  
+  esac
+
+else
+  clear
+  banner
+  
+  c2=$(gum choose --cursor.foreground 14 --height 10 --item.foreground 5 --selected.foreground 12 \
+  --selected.background 6 "1. BSPWM" "2. KDE Plasma with BSPWM" "3. KDE Plasma" "4. LXDE" \
+  "5. Exit")
+  
+  BSPWM=plasma-custom-wm.service
+  KWIN=plasma-kwin_x11.service
+
+  case $c2 in
+
+    "1. BSPWM") confirm && deploy bspwm && startx || clear && exit 0 ;;
+
+    "2. KDE Plasma with BSPWM") 
+       if systemctl --user is-enabled $BSPWM | grep -q "disabled"; then 
+         systemctl --user disable $KWIN
+         systemctl --user enable $BSPWM 
+       fi
+       confirm && deploy startplasma-x11 && startx || clear && exit 0 ;;
+
+    "3. KDE Plasma") if systemctl --user is-enabled $BSPWM | grep -q "enabled"; then
+         systemctl --user disable $BSPWM
+         systemctl --user enable $KWIN 
+       fi
+       confirm && deploy startplasma-x11 && startx || clear && exit 0 ;;
+
+    "4. LXDE") confirm && deploy startlxde && startx || clear && exit 0 ;;
+
+    "5. Exit") exit 0 ;;
+    
+    *) cancelled ;;
+
+  esac
+fi
