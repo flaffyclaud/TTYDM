@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TTYDM - A Simple TTY Desktop Manager for Linux</title>
+  <meta name="description" content="TTYDM is a simple TTY console Desktop Environment selector for Linux, featuring a retro TTY-inspired console interface. By flaffyclaud.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body {
+      background: #000;
+      color: #00FF00;
+      font-family: 'Fira Mono', 'Consolas', 'Courier New', monospace;
+      font-size: 1.1em;
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    .terminal {
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 32px;
+      background: #111;
+      border-radius: 8px;
+      box-shadow: 0 0 24px #021;
+      border: 2px solid #0f0;
+    }
+    .terminal-header {
+      font-weight: bold;
+      font-size: 1.3em;
+      margin-bottom: 16px;
+      letter-spacing: 1px;
+      color: #0f0;
+    }
+    a {
+      color: #0ff;
+      text-decoration: underline;
+    }
+    .prompt {
+      color: #0f0;
+      font-weight: bold;
+    }
+    .meta {
+      font-size: 0.92em;
+      color: #0c0;
+      margin-top: 18px;
+    }
+    .doc-list {
+      margin: 18px 0 0 0;
+      padding: 0 0 0 1em;
+    }
+    .doc-list li {
+      margin-bottom: 8px;
+    }
+    abbr {
+      border-bottom: 1px dotted #0f0;
+      cursor: help;
+    }
+  </style>
+</head>
+<body>
+  <div class="terminal">
+    <div class="terminal-header">
+      TTYDM <span class="prompt">$</span>
+    </div>
+    <div>
+      <span class="prompt">>_</span> <strong>Description:</strong> A Simple TTY Desktop Manager for Linux.<br>
+      <span class="prompt">>_</span> <strong>Author:</strong> <a href="https://github.com/flaffyclaud" target="_blank" rel="noopener">flaffyclaud</a><br>
+      <span class="prompt">>_</span> <strong>Repository:</strong> <a href="https://github.com/flaffyclaud/TTYDM" target="_blank" rel="noopener">github.com/flaffyclaud/TTYDM</a>
+    </div>
+    <div class="meta">
+      <span class="prompt">>_</span> <strong>About:</strong> TTYDM is a simple TTY console Desktop Environment selector with a TUI interface coded using Shell Script.<br>
+      Uses <a href="https://github.com/charmbracelet/gum" target="_blank" rel="noopener">Gum</a> for a rich TUI experience.<br>
+      <span class="prompt">>_</span> <strong>Status:</strong> Early stages of development.
+      <ul class="doc-list">
+        <li>Retro green-on-black terminal style</li>
+        <li>Minimal documentation for easy onboarding</li>
+        <li>Open-source on GitHub</li>
+      </ul>
+      <span class="prompt">>_</span> <strong>Installation:</strong>
+      <ul class="doc-list">
+        <li>Install Gum: <a href="https://github.com/charmbracelet/gum" target="_blank" rel="noopener">https://github.com/charmbracelet/gum</a></li>
+        <li>Copy the script to <code>/usr/bin/ttydm</code> and set appropriate permissions.</li>
+        <li>Modify the script according to your requirements.</li>
+      </ul>
+      <span class="prompt">>_</span> <strong>How to Use:</strong>
+      <ul class="doc-list">
+        <li>Run <code>ttydm</code> in your TTY session to select desktop environments via a TUI interface.</li>
+      </ul>
+    </div>
+    <div class="meta">
+      <span class="prompt">>_</span> <strong>Keywords:</strong> TTY, terminal, retro, console, desktop manager, linux, shell, Gum, flaffyclaud, github
+    </div>
+    <div class="meta">
+      <span class="prompt">>_</span> <strong>More info:</strong> <a href="https://github.com/flaffyclaud/TTYDM" target="_blank" rel="noopener">Visit the repository</a>
+    </div>
+  </div>
+</body>
+</html>
