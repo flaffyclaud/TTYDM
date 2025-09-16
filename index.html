@@ -5,11 +5,13 @@
   <title>TTYDM - A Simple TTY Desktop Manager for Linux</title>
   <meta name="description" content="TTYDM is a simple TTY console Desktop Environment selector for Linux, featuring a retro TTY-inspired console interface. By flaffyclaud.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Use 'tty' console font, fallback to monospace -->
+  <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/tty" />
   <style>
     html, body {
       background: #000;
       color: #00FF00;
-      font-family: 'Fira Mono', 'Consolas', 'Courier New', monospace;
+      font-family: 'TTY', 'Fira Mono', 'Consolas', 'Courier New', monospace;
       font-size: 1.1em;
       margin: 0;
       padding: 0;
@@ -23,6 +25,10 @@
       border-radius: 8px;
       box-shadow: 0 0 24px #021;
       border: 2px solid #0f0;
+      /* Make links and content wrap */
+      word-break: break-word;
+      overflow-wrap: anywhere;
+      overflow-x: auto;
     }
     .terminal-header {
       font-weight: bold;
@@ -30,19 +36,26 @@
       margin-bottom: 16px;
       letter-spacing: 1px;
       color: #0f0;
+      font-family: 'TTY', 'Fira Mono', 'Consolas', 'Courier New', monospace;
     }
     a {
       color: #0ff;
       text-decoration: underline;
+      /* Ensure long links break inside the terminal */
+      word-break: break-all;
+      overflow-wrap: anywhere;
+      font-family: inherit;
     }
     .prompt {
       color: #0f0;
       font-weight: bold;
+      font-family: 'TTY', 'Fira Mono', 'Consolas', 'Courier New', monospace;
     }
     .meta {
       font-size: 0.92em;
       color: #0c0;
       margin-top: 18px;
+      font-family: inherit;
     }
     .doc-list {
       margin: 18px 0 0 0;
@@ -68,6 +81,8 @@
       text-decoration: none;
       box-shadow: 0 2px 4px #021;
       transition: background 0.2s, color 0.2s;
+      word-break: break-word;
+      overflow-wrap: anywhere;
     }
     .github-btn:hover {
       background: #0ff;
